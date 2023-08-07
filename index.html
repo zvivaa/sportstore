@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спортивный магазин</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="scripts.js" defer></script>
+    <script src="cart.js" defer></script>
+</head>
+<body>
+    <div class="admin-block" id="admin-login" style="display: none;">
+        <div style="z-index: 1000;" class="admin-login" id="admin-log">
+            <div class="admin-content" style="display: flex; flex-direction: column; align-items: center;">
+                <h2>Админ Панель</h2>
+                <div>
+                    <input type="text" id="username" placeholder="Логин">
+                    <input type="password" id="password" placeholder="Пароль">
+                </div>
+                <button id="login">Войти</button>
+            </div>
+        </div>
+    </div>
+    <nav>
+        <div class="nav-content">
+            <h1><a href="index.html" style="text-decoration: none; color: black;">Sportswear Store</a></h1>
+            <div id="category-selection">
+                <div class="category-button">
+                    <button data-category-id="1" data-product-type="Одежда">Одежда</button>
+                    <button data-category-id="2" data-product-type="Кроссовки">Кроссовки</button>
+                </div>
+                <div id="open-cart-container">
+                    <button id="open-cart">Корзина</button>
+                    <button id="logout" style="display: none;">Выйти</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="content-container">
+            <div id="price-filter">
+                <input type="number" id="min-price" placeholder="Мин. цена">
+                <input type="number" id="max-price" placeholder="Макс. цена">
+                <button id="filter-button">Применить</button>             
+                <button id="reset-filter-button">Сбросить</button>                        
+            </div>
+            <div id="products"></div>
+            <div id="site-content">
+                <main>
+                    <section id="popular-products">
+                        <h2>Популярные товары</h2>
+                        <div id="products" class="products-container popular-product">
+                            <!-- Место для товаров -->
+                        </div>
+                    </section>
+                    <section style="z-index: 900;" id="brands">
+                        <h2>Представленные бренды</h2>
+                        <div class="brand-logo-container">
+                            <a><img width="150px" src="img/nike.svg" alt="Nike" /></a>
+                            <a><img width="120px" src="img/jordan.svg" alt="Jordan" /></a>
+                            <a><img width="150px" src="img/adidas.svg" alt="Adidas" /></a>
+                            <a><img width="150px" src="img/nb.svg" alt="New Balance" /></a>
+                        </div>
+                    </section>                    
+                </main>                
+            </div>
+            <div id="add-product" style="display: none;">
+                <h2>Добавить товар</h2>
+                <input type="text" id="product-name" placeholder="Название">
+                <textarea id="product-description" placeholder="Описание"></textarea>
+                <input type="number" id="product-price" placeholder="Цена">
+                <input type="text" id="product-image-url" placeholder="Путь до картинки">
+                <select id="product-category">
+                    <option value="1">Одежда</option>
+                    <option value="2">Кроссовки</option>
+                </select>
+                <button id="add">Добавить</button>
+                <button id="logout" style="display: none;">Выйти</button>
+                <table id="orders">
+                    <tr>
+                        <th>Номер</th>
+                        <th>Имя</th>
+                        <th>Телефон</th>
+                        <th>Почта</th>
+                        <th>Заказ</th>
+                        <th>Размер</th>
+                        <th>Статус</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-section">
+            <h4>О нас</h4>
+            <p>Мы предлагаем широкий ассортимент качественной спортивной одежды. Наша цель - помочь вам чувствовать себя комфортно и стильно во время тренировок.</p>
+            <button id="admin-button">Admin</button>
+        </div>
+        <div class="footer-section">
+            <h4>Полезные ссылки</h4>
+            <ul>
+                <li><a href="delivery.html">Доставка и оплата</a></li>
+                <li><a href="returns.html">Возврат товара</a></li>
+                <li><a href="size-chart.html">Таблица размеров</a></li>
+                <li><a href="contact.html">Контакты</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Контакты</h4>
+            <p>Телефон: +7 900 000 00 00</p>
+            <p>Email: info@sportswear.com</p>
+        </div>
+        <div class="footer-section">
+            <h4>Мы в социальных сетях</h4>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+    </footer>
+    <script>
+        $("#admin-button").on("click", function() {
+            $("#admin-login").show();
+            $("#admin-button").show();
+            $("#admin-login").css('opacity', '1');
+            $("#admin-log").css('opacity', '1');
+        });
+    </script>
+</body>
+</html>
